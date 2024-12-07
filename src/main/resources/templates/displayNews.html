@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Articles</title>
+</head>
+<body>
+    <div>News Articles</div>
+    <br><br>
+    <div>
+        <form th:action="@{/save}" method="post">
+            <button type="submit">Save Articles</button>
+            <table>
+                <tr th:each="article : ${newsList}">
+                    <td>
+                        <img th:src="@{${article.imageUrl}}">
+                    </td>
+                    <td>
+                        <p th:text="'Id: '+ ${article.id}"></p>
+                        <!-- <br> -->
+                        <p th:text="${article.title}"></p>
+                        <!-- <br> -->
+                        <p th:text="${article.body}"></p>
+                        <!-- <br> -->
+                        <p th:text="'Categories: '+${article.categories}"></p>
+                        <!-- <br> -->
+                        <p th:text="'Tags: '+${article.tags}"></p>        
+                        <!--  -->
+                        <p th:text="'Published on: '+${article.publishedOn} "></p>
+                        <a th:href="${article.url}">Link to Article</a>
+                        <br>
+                        <label> Save Article</label>
+                        <input type="checkbox" name="id" th:value="${article.id}">
+                        <input type="hidden" name="imageUrl" th:value="${article.imageUrl}">
+                        <input type="hidden" name="title" th:value="${article.title}">
+                        <input type="hidden" name="body" th:value="${article.body}">
+                        <input type="hidden" name="categories" th:value="${article.categories}">
+                        <input type="hidden" name="tags" th:value="${article.tags}">
+                        <input type="hidden" name="publishedOn" th:value="${article.publishedOn}">
+                        <input type="hidden" name="url" th:value="${article.url}">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
