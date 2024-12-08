@@ -29,32 +29,31 @@ public class NewsController {
     }
 
     @PostMapping("/save")
-    public String saveArticle(@RequestParam("id") List<String> ids,
-                                @RequestParam("imageUrl") List<String> imageUrls,
-                                @RequestParam("title") List<String> titles,
-                                @RequestParam("body") List<String> bodies,
-                                @RequestParam("categories") List<String> categories,
-                                @RequestParam("tags") List<String> tags,
-                                @RequestParam("publishedOn") List<String> publishedOn,
+    public String saveArticle(@RequestParam(value = "id", required = false) List<String> ids,
+                                @RequestParam(value="imageUrl", required = false) List<String> imageUrls,
+                                @RequestParam(value = "title", required = false) List<String> titles,
+                                @RequestParam(value = "body", required = false) List<String> bodies,
+                                @RequestParam(value = "categories", required = false) List<String> categories,
+                                @RequestParam(value = "tags", required = false) List<String> tags,
+                                @RequestParam(value = "publishedOn", required = false) List<String> publishedOn,
                                 @RequestParam("url") List<String> urls){
-        
-        List<News> newsList = new ArrayList<>();
-        for (int i = 0 ; i<ids.size() ; i++){
-            News news = new News();
-            news.setId(ids.get(i));
-            news.setBody(bodies.get(i));
-            news.setCategories(categories.get(i));
-            news.setImageUrl(imageUrls.get(i));
-            news.setPublishedOn(publishedOn.get(i));
-            news.setTags(tags.get(i));
-            news.setTitle(titles.get(i));
-            news.setUrl(urls.get(i));
-            newsList.add(news);
+        if (ids!=null){
+            List<News> newsList = new ArrayList<>();
+            for (int i = 0 ; i<ids.size() ; i++){
+                News news = new News();
+                news.setId(ids.get(i));
+                news.setBody(bodies.get(i));
+                news.setCategories(categories.get(i));
+                news.setImageUrl(imageUrls.get(i));
+                news.setPublishedOn(publishedOn.get(i));
+                news.setTags(tags.get(i));
+                news.setTitle(titles.get(i));
+                news.setUrl(urls.get(i));
+                newsList.add(news);
+            }
+            
+            newsService.saveArticles(newsList);
         }
-        
-        newsService.saveArticles(newsList);
-        System.out.println("saved");
-
         return "redirect:/";
     }
 
