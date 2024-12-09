@@ -23,7 +23,7 @@
     
     # directory where either source code resides or i copy my project to 
     WORKDIR ${DEPLOY_DIR}
-    COPY --from=compiler /code_folder/target/ssf_2022_practice-0.0.1-SNAPSHOT.jar ssf_2022_practice.jar
+    COPY --from=compiler /code_folder/target/ssf_2022_practice-0.0.1-SNAPSHOT.jar target/ssf_2022_practice.jar
     
     
     ENV SERVER_PORT=3000
