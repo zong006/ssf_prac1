@@ -17,7 +17,7 @@
     
     # ---------------------------- STAGE 2 ----------------------------
     
-    FROM maven:3.9.9-eclipse-temurin-23-jre-noble
+    FROM maven:3.9.9-eclipse-temurin-23
     
     ARG DEPLOY_DIR=/app
     
