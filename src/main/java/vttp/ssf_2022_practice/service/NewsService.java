@@ -26,7 +26,7 @@ public class NewsService {
     NewsRepo newsRepo;
 
     @Value("${api_key}") 
-    private static String api_key;
+    private String api_key;
 
     public List<News> getArticles(){
         
