@@ -11,7 +11,7 @@
     COPY src src
     COPY .mvn .mvn 
     
-    RUN chmod a+x mvn package -Dmaven.test.skip=true
+    RUN mvn package -Dmaven.test.skip=true
     
     # ---------------------------- STAGE 1 ----------------------------
     
