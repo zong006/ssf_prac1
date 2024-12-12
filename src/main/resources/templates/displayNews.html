@@ -9,7 +9,7 @@
     <div>News Articles</div>
     <br><br>
     <div>
-        <form th:action="@{/save}" method="post">
+        <form th:action="@{/save}" method="post" th:object="${toSave}">
             <button type="submit">Save Articles</button>
             <table>
                 <tr th:each="article : ${newsList}">
